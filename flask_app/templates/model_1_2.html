@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогнозирование модуля упругости при растяжении и прочности при растяжении</title>
+        <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+        position: relative;
+        margin: 3% auto;
+        padding: 10vh;
+        width: 90vw;
+        height: 90vh;
+        text-align:center;
+        border-radius: 10px;
+        border: 5px solid #fff;
+        box-shadow: 2px 1px 5px #999999;
+        font-family: sans-serif;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #d3eed3;
+        background-position: center;
+    }
+    p {
+        border-radius: 10px;
+        border: 3px solid #fff;
+        box-shadow: 2px 1px 5px #999999;
+    }
+    div {
+        border-radius: 10px;
+        border: 3px solid #fff;
+        box-shadow: 2px 1px 5px #999999;
+    }
+    label {
+    	  display: table-cell;
+		    float: left;
+    }
+    a {
+        text-decoration: none;
+        color:black;
+        font-size:18px
+    }
+    table {
+    	width:100%;
+    	border-collapse: collapse;
+		border-radius: 10px;
+        border: 3px solid #fff;
+        box-shadow: 2px 1px 5px #999999;
+    }
+    input[type=submit] {
+    	margin: 1em auto;
+		padding:5px 5px;
+		background:#7bcc7b;
+		border:1 none;
+		cursor:pointer;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
+    </style>
+</head>
+<body>
+    <h2>Прогнозирование модуля упругости при растяжении и прочности при растяжении</h2>
+
+    {% if error %}
+        <pre style="color:Red">{{ error }}</pre>
+    {% endif %}
+
+    <form action="" method="post">
+	<table align="center" border="1" cellpadding="5" cellspacing="5" width="500px">
+		<tbody>
+			<tr>
+	    		<td><label for="par1">Соотношение матрица-наполнитель</label></td>
+	    		<td><input type="text" name="par1" value="{{ params.get('par1') }}"></td>
+			</tr>
+		    <tr>
+		      <td><label for="par2">Плотность, кг/м3</label></td>
+		      <td><input type="text" name="par2" value="{{ params.get('par2') }}"></td>
+	      	</tr>
+		    <tr>
+		      <td><label for="par3">Модуль упругости, ГПа</label></td>
+		      <td><input type="text" name="par3" value="{{ params.get('par3') }}"></td>
+		    </tr>
+	  		<tr>
+		      <td><label for="par4">Количество отвердителя, м.%</label></td>
+		      <td><input type="text" name="par4" value="{{ params.get('par4') }}"></td>
+		    <tr>
+		    <tr>
+		      <td><label for="par5">Содержание эпоксидных групп,%_2</label></td>
+		      <td><input type="text" name="par5" value="{{ params.get('par5') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par6">Температура вспышки, С_2</label></td>
+		      <td><input type="text" name="par6" value="{{ params.get('par6') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par7">Поверхностная плотность, г/м2</label></td>
+		      <td><input type="text" name="par7" value="{{ params.get('par7') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par10">Потребление смолы, г/м2</label></td>
+		      <td><input type="text" name="par10" value="{{ params.get('par10') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par11">Угол нашивки, град</label></td>
+		      <td><input type="text" name="par11" value="{{ params.get('par11') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par12">Шаг нашивки</label></td>
+		      <td><input type="text" name="par12" value="{{ params.get('par12') }}"></td>
+		    </tr>
+		    <tr>
+		      <td><label for="par13">Плотность нашивки</label></td>
+		      <td><input type="text" name="par13" value="{{ params.get('par13') }}"></td>
+		    </tr>
+	</tbody>
+</table>
+	    <input type="submit" value="Предсказать">
+    </form>
+
+    {% if par8 or par9 %}
+
+		<p>Результат прогнозирования:</p>
+		<table>
+		  <thead>
+			<tr>
+			  <th>Модуль упругости при растяжении, ГПа</th>
+			  <th>Прочность при растяжении, МПа</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <td>{{ par8 }}</td>
+			  <td>{{ par9 }}</td>
+			</tr>
+		  </tbody>
+		</table>
+
+    {% endif %}
+
+</body>
+</html>
+
